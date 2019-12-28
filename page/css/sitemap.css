@@ -1,0 +1,48 @@
+/* 地图样式 */
+*{
+    margin:0px;
+    padding:0px;
+    text-decoration: none;
+    list-style: none;
+}
+.title{
+    width:100%;
+    text-align: center;
+    font-weight:600;
+    line-height:50px;
+    font-size:20px;
+}
+.link{
+    border:1px solid #eeeeee;
+    font-size:14px;
+    padding:10px;
+    width:95%;
+    margin:0px auto;
+}
+.link>a{
+    color:#000;
+}
+.blog_list{
+    border:1px solid #eeeeee;
+    width:95%;
+    font-size:14px;
+    padding:10px;
+    margin:10px auto;
+    font-weight:600;
+}
+.blog_list>span{
+    display: block;
+}
+.blog_list>ul{
+    padding:10px;
+    width:100%;
+    margin:10px auto;
+}
+.blog_list li{
+   margin-top:5px;
+}
+.blog_list a{
+    color:#000;
+    cursor: pointer;
+    font-weight:400;
+}
