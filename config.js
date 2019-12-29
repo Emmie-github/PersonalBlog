@@ -9,5 +9,5 @@ for (let i = 0; i < configArr.length; i++) {
     .split("=")[1]
     .trim();
 }
-console.log(globalconfig);
+// console.log(globalconfig);
 module.exports = globalconfig;
