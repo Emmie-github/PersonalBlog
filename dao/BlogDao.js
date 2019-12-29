@@ -1,4 +1,5 @@
 const dbutil = require("./DBUtil");
+
 /**数据库->Blog增 */
 function insertBlog(title, content, tags, views, ctime, utime, success) {
   var insertSql = "insert into blog (`title`, `content`, `tags`, `views`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?)";
