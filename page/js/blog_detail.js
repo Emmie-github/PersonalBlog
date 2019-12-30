@@ -36,7 +36,7 @@ let blogDetail = new Vue({
         let result = resp.data.data[0];
         blogDetail.title = result.title;
         blogDetail.content = result.content;
-        blogDetail.ctime =new Date(result.ctime*1000).toLocaleDateString();
+        blogDetail.ctime = new Date(result.ctime * 1000).toLocaleDateString();
         blogDetail.tags = result.tags;
         blogDetail.views = result.views;
       })
@@ -179,3 +179,4 @@ let blogComments = new Vue({
       });
   }
 });
+

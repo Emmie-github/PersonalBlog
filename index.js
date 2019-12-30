@@ -50,7 +50,7 @@ app.get("/queryByTag", loader.get("/queryByTag"));
 /**通过标签数量查询 */
 app.get("/queryByTagCount", loader.get("/queryByTagCount"));
 
-/**通过标题查询 */
+/**通过标题、标签查询 */
 app.get("/queryBlogByValue", loader.get("/queryBlogByValue"));
 
 app.listen(globalconfig.port, function() {

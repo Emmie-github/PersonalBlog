@@ -193,14 +193,6 @@ var articleList = new Vue({
   }
 });
 
-//翻页
-// var pageTool=new Vue({
-// el:"#page_tool",
-// data:{
-
-// }
-// })
-
 //搜所
 var searchBar = new Vue({
   el: "#search_bar",
@@ -217,7 +209,6 @@ var searchBar = new Vue({
         url: "/queryBlogByValue?value=" + input
       }).then(resp => {
         console.log(resp);
-        searchBar.search = resp.data.data.title;
         articleList.count = resp.data.data.count;
         articleList.generatePageTool.nowPage = 1;
         articleList.generatePageTool;

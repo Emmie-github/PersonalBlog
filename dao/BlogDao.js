@@ -115,7 +115,7 @@ function queryHotBlog(size, success) {
 
 /**数据库->Blog 通过标题、内容查找->查 */
 function queryBlogByValue(value,page,pageSize, success) {
-  const querySql = "select * from blog where title like ? or content like ?;";
+  const querySql = "select * from blog where title like ? or tags like ?;";
   const params = ["%" + value + "%", "%" + value + "%",(page-1)*pageSize,pageSize];
   const connection = dbutil.createConnection();
   connection.connect();
