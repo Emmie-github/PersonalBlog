@@ -139,15 +139,21 @@ function queryHotBlog(request, response) {
 }
 path.set("/queryHotBlog", queryHotBlog);
 
-/**数据库->Blog 通过标题、内容查找->查 */
-function queryBlogBySearch(request, response) {
+/**Blog 通过标题、内容查找->查 */
+function queryBlogByValue(request, response) {
   let params = url.parse(request.url, true).query;
-  blogDao.queryBlogBySearch(params.search, function(result) {
-    response.writeHead(200);
-    response.write(respUtil.writeResult("success", "查询成功", result));
-    response.end();
-  });
+  // console.log(params.value);
+  blogDao.queryBlogByValue(
+    params.value,
+    parseInt(params.page),
+    parseInt(params.pageSize),
+    function(result) {
+      response.writeHead(200);
+      response.write(respUtil.writeResult("success", "查询成功", result));
+      response.end();
+    }
+  );
 }
 
-path.set("/queryBlogBySearch", queryBlogBySearch);
+path.set("/queryBlogByValue", queryBlogByValue);
 module.exports.path = path;

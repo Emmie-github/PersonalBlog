@@ -113,11 +113,10 @@ function queryHotBlog(size, success) {
   connection.end();
 }
 
-/**数据库->Blog 通过标题查找->查 */
-function queryBlogBySearch(search, success) {
-  const querySql =
-  "select * from blog where title like \"%?%\" or content like \"%?%\";";
-  const params = [search,search];
+/**数据库->Blog 通过标题、内容查找->查 */
+function queryBlogByValue(value,page,pageSize, success) {
+  const querySql = "select * from blog where title like ? or content like ?;";
+  const params = ["%" + value + "%", "%" + value + "%",(page-1)*pageSize,pageSize];
   const connection = dbutil.createConnection();
   connection.connect();
   connection.query(querySql, params, function(error, result) {
@@ -129,7 +128,9 @@ function queryBlogBySearch(search, success) {
   });
   connection.end();
 }
-
+// queryBlogByValue("module", result => {
+//   console.log(result);
+// });
 module.exports.insertBlog = insertBlog;
 module.exports.queryBlogByPage = queryBlogByPage;
 module.exports.queryBlogCount = queryBlogCount;
@@ -137,4 +138,4 @@ module.exports.queryBlogById = queryBlogById;
 module.exports.queryAllBlog = queryAllBlog;
 module.exports.addViews = addViews;
 module.exports.queryHotBlog = queryHotBlog;
-module.exports.queryBlogBySearch = queryBlogBySearch;
+module.exports.queryBlogByValue = queryBlogByValue;

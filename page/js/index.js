@@ -40,7 +40,7 @@ var articleList = new Vue({
   data: {
     page: 1,
     pageSize: 5,
-    count: 100,
+    count: 0,
     pageNumList: [],
     articleList: [
       {
@@ -193,21 +193,35 @@ var articleList = new Vue({
   }
 });
 
+//翻页
+// var pageTool=new Vue({
+// el:"#page_tool",
+// data:{
+
+// }
+// })
+
 //搜所
 var searchBar = new Vue({
   el: "#search_bar",
   data: {
-    search: ""
+    input: ""
   },
   computed: {},
   methods: {
     //请求数据,给search赋值
     sendSearch: function() {
       console.log("===");
+      let input = document.querySelector("input").value;
       axios({
-        url: "/queryBlogBySearch?search=" + this.search
+        url: "/queryBlogByValue?value=" + input
       }).then(resp => {
         console.log(resp);
+        searchBar.search = resp.data.data.title;
+        articleList.count = resp.data.data.count;
+        articleList.generatePageTool.nowPage = 1;
+        articleList.generatePageTool;
+        articleList.articleList = resp.data.data;
       });
     }
   }

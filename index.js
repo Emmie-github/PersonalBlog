@@ -51,7 +51,7 @@ app.get("/queryByTag", loader.get("/queryByTag"));
 app.get("/queryByTagCount", loader.get("/queryByTagCount"));
 
 /**通过标题查询 */
-// app.get("/queryBlogBySearch", loader.get("/queryBlogBySearch"));
+app.get("/queryBlogByValue", loader.get("/queryBlogByValue"));
 
 app.listen(globalconfig.port, function() {
   console.log("服务器已启动");
