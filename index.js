@@ -50,6 +50,8 @@ app.get("/queryByTag", loader.get("/queryByTag"));
 /**通过标签数量查询 */
 app.get("/queryByTagCount", loader.get("/queryByTagCount"));
 
+/**通过标题查询 */
+// app.get("/queryBlogBySearch", loader.get("/queryBlogBySearch"));
 
 app.listen(globalconfig.port, function() {
   console.log("服务器已启动");

@@ -1,3 +1,5 @@
+/**留言区 */
+
 /**博客评论显示区 */
 let blogComments = new Vue({
   el: "#blog_comments",
@@ -21,6 +23,9 @@ let blogComments = new Vue({
       url: "/queryCommentsByBlogId?bid=" + bid
     }).then(resp => {
       console.log(resp);
+      resp.data.data.map(v => {
+        v.ctime = new Date(v.ctime * 1000).toLocaleString();
+      });
       blogComments.comments = resp.data.data;
       for (let i = 0; i < blogComments.comments.length; i++) {
         if (blogComments.comments[i].parent > -1) {

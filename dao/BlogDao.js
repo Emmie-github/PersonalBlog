@@ -2,16 +2,17 @@ const dbutil = require("./DBUtil");
 
 /**数据库->Blog增 */
 function insertBlog(title, content, tags, views, ctime, utime, success) {
-  var insertSql = "insert into blog (`title`, `content`, `tags`, `views`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?)";
+  var insertSql =
+    "insert into blog (`title`, `content`, `tags`, `views`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?)";
   var params = [title, content, tags, views, ctime, ctime];
   var connection = dbutil.createConnection();
   connection.connect();
-  connection.query(insertSql, params, function (error, result) {
-      if (error == null) {
-          success(result);
-      } else {
-          console.log(error);
-      }
+  connection.query(insertSql, params, function(error, result) {
+    if (error == null) {
+      success(result);
+    } else {
+      console.log(error);
+    }
   });
   connection.end();
 }
@@ -112,6 +113,22 @@ function queryHotBlog(size, success) {
   connection.end();
 }
 
+/**数据库->Blog 通过标题查找->查 */
+function queryBlogBySearch(search, success) {
+  const querySql =
+  "select * from blog where title like \"%?%\" or content like \"%?%\";";
+  const params = [search,search];
+  const connection = dbutil.createConnection();
+  connection.connect();
+  connection.query(querySql, params, function(error, result) {
+    if (error == null) {
+      success(result);
+    } else {
+      console.log(error);
+    }
+  });
+  connection.end();
+}
 
 module.exports.insertBlog = insertBlog;
 module.exports.queryBlogByPage = queryBlogByPage;
@@ -120,3 +137,4 @@ module.exports.queryBlogById = queryBlogById;
 module.exports.queryAllBlog = queryAllBlog;
 module.exports.addViews = addViews;
 module.exports.queryHotBlog = queryHotBlog;
+module.exports.queryBlogBySearch = queryBlogBySearch;

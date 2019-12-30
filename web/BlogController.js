@@ -94,7 +94,6 @@ function insertTagBlogMapping(tagId, blogId) {
   );
 }
 
-
 /**Blog总数查询 */
 function queryBlogCount(request, response) {
   blogDao.queryBlogCount(function(result) {
@@ -140,4 +139,15 @@ function queryHotBlog(request, response) {
 }
 path.set("/queryHotBlog", queryHotBlog);
 
+/**数据库->Blog 通过标题、内容查找->查 */
+function queryBlogBySearch(request, response) {
+  let params = url.parse(request.url, true).query;
+  blogDao.queryBlogBySearch(params.search, function(result) {
+    response.writeHead(200);
+    response.write(respUtil.writeResult("success", "查询成功", result));
+    response.end();
+  });
+}
+
+path.set("/queryBlogBySearch", queryBlogBySearch);
 module.exports.path = path;

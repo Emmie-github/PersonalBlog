@@ -1,4 +1,4 @@
-/**内容区左侧 */
+/**首页-内容区左侧 */
 
 // 每日一句
 var everyDay = new Vue({
@@ -33,7 +33,6 @@ var everyDay = new Vue({
       });
   }
 });
-
 
 // 文章
 var articleList = new Vue({
@@ -191,5 +190,25 @@ var articleList = new Vue({
   created: function() {
     //请求数据,给articleList赋值
     this.getPage(this.page, this.pageSize);
+  }
+});
+
+//搜所
+var searchBar = new Vue({
+  el: "#search_bar",
+  data: {
+    search: ""
+  },
+  computed: {},
+  methods: {
+    //请求数据,给search赋值
+    sendSearch: function() {
+      console.log("===");
+      axios({
+        url: "/queryBlogBySearch?search=" + this.search
+      }).then(resp => {
+        console.log(resp);
+      });
+    }
   }
 });

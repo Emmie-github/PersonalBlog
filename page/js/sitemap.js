@@ -1,4 +1,5 @@
 /**地图 */
+/**博客详情 */
 let blogList = new Vue({
   el: "#blog_list",
   data: {
